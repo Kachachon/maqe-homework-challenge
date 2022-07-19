@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MAQE Forum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body class="bg-secondary bg-opacity-10">
+    <div class="container mt-5">
+        <h1 class="mb-3 fw-bold"> MAQE FORUM</h1>
+        <p>Your current timezone is: Asia/Ranakok</p>
+
+
+        <% for(let i = 0; i < post.length; i++ ){ %>
+            <div class="bg-white shadow-sm rounded-1 mb-3 para-card">
+                <div class="p-4">
+                    <img src="<%= authors.find(author => author.id === post[i].author_id).avatar_url%>" alt="avatar" width="30px" height="30px" class="rounded-circle">
+                    <span style="color: rgb(230, 75, 40);" class="fw-semibold">
+                        <%= authors.find(author => author.id === post[i].author_id).name%>
+                    </span>
+                    <span class="text-secondary">
+                        posted on 
+                        <%= new Date(post[i].created_at).toLocaleTimeString('en-TH', 
+                        { weekday:"long", day:"numeric", month:"short", year:"numeric",hour: 'numeric',minute: 'numeric',hourCycle: 'h23'}) 
+                        %>
+                        
+                    </span>
+                </div>
+                <hr class="border-secondary my-0"></hr>
+                <div class="p-4 d-flex gap-4">
+                    <img src="<%= post[i].image_url%>" width="20%" alt="image">
+                    <div>
+                        <h2 class="h3">
+                            <%= post[i].title%>
+                        </h2>
+                        <p>
+                            <%= post[i].body%>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+        <% } %>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+
+<style>
+.para-card:nth-child(2n){
+    background-color:rgb(210,235,253) !important
+}
+
+</style>
+
+</html>
